@@ -25,9 +25,21 @@ jobs:
       - run:
           name: Compile Project
           command: lizard src
+  flawfinder:
+    executor: python/default
+    resource_class: small
+    steps:
+      - checkout # checkout source code to working directory
+      - run:
+          name: Install flawfinder
+          command: pip install --upgrade flawfinder
+      - run:
+          name: Compile Project
+          command: flawfinder src
 
 workflows:
   main:
     jobs:
       - build
       - lizard
+      - flawfinder
