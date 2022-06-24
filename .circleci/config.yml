@@ -5,7 +5,7 @@ orbs:
 jobs:
   build:
     executor: python/default
-    class: small
+    resource_class: small
     steps:
       - checkout # checkout source code to working directory
       - run:
