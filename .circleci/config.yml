@@ -5,8 +5,9 @@ orbs:
 jobs:
   build:
     executor: python/default
+    class: small
     steps:
-      - checkout  # checkout source code to working directory
+      - checkout # checkout source code to working directory
       - run:
           name: Install PlatformIO
           command: pip install --upgrade platformio
