@@ -14,8 +14,20 @@ jobs:
       - run:
           name: Compile Project
           command: pio run
+  lizard:
+    executor: python/default
+    resource_class: small
+    steps:
+      - checkout # checkout source code to working directory
+      - run:
+          name: Install lizard
+          command: pip install --upgrade lizard
+      - run:
+          name: Compile Project
+          command: lizard src
 
 workflows:
   main:
     jobs:
       - build
+      - lizard
