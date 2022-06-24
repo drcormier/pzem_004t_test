@@ -2,10 +2,10 @@
  * File: PZEMModbusMaster.cpp
  * Project: src
  * File Created: Saturday, 18th June 2022 5:38:20 pm
- * Author: Daniel Cormier (git@drc97.com)
+ * Author: Daniel Cormier
  * -----
- * Last Modified: Friday, 24th June 2022 8:24:32 am
- * Modified By: Daniel Cormier (git@drc97.com)
+ * Last Modified: Friday, 24th June 2022 8:54:17 am
+ * Modified By: Daniel Cormier
  * -----
  * Copyright 2022 Daniel Cormier
  */

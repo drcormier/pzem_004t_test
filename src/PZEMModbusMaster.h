@@ -2,10 +2,10 @@
  * File: PZEMModbusMaster.h
  * Project: src
  * File Created: Saturday, 18th June 2022 5:36:59 pm
- * Author: Daniel Cormier (git@drc97.com)
+ * Author: Daniel Cormier
  * -----
- * Last Modified: Friday, 24th June 2022 8:24:44 am
- * Modified By: Daniel Cormier (git@drc97.com)
+ * Last Modified: Friday, 24th June 2022 8:55:01 am
+ * Modified By: Daniel Cormier
  * -----
  * Copyright 2022 Daniel Cormier
  */

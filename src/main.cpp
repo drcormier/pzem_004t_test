@@ -2,10 +2,10 @@
  * File: main.cpp
  * Project: src
  * File Created: Saturday, 18th June 2022 10:50:19 am
- * Author: Daniel Cormier (git@drc97.com)
+ * Author: Daniel Cormier
  * -----
- * Last Modified: Friday, 24th June 2022 8:24:55 am
- * Modified By: Daniel Cormier (git@drc97.com)
+ * Last Modified: Friday, 24th June 2022 8:54:51 am
+ * Modified By: Daniel Cormier
  * -----
  * Copyright 2022 Daniel Cormier
  */
