@@ -40,6 +40,9 @@ jobs:
 workflows:
   main:
     jobs:
-      - build
       - lizard
       - flawfinder
+      - build:
+        requires:
+          - lizard
+          - flawfinder
