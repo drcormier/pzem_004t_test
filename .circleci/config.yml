@@ -1,6 +1,6 @@
 version: 2.1
 orbs:
-  python: circleci/python@1.4.0
+  python: circleci/python@volatile
 
 jobs:
   build:
@@ -23,7 +23,7 @@ jobs:
           name: Install lizard
           command: pip install --upgrade lizard
       - run:
-          name: Compile Project
+          name: Check Project
           command: lizard src
   flawfinder:
     executor: python/default
@@ -34,7 +34,7 @@ jobs:
           name: Install flawfinder
           command: pip install --upgrade flawfinder
       - run:
-          name: Compile Project
+          name: Check Project
           command: flawfinder src
 
 workflows:
