@@ -43,6 +43,6 @@ workflows:
       - lizard
       - flawfinder
       - build:
-        requires:
-          - lizard
-          - flawfinder
+          requires:
+            - lizard
+            - flawfinder
