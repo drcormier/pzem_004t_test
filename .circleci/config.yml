@@ -24,7 +24,7 @@ jobs:
           command: pip install --upgrade lizard
       - run:
           name: Check Project
-          command: lizard src
+          command: lizard -T nloc=150 -T length=50 -T parameter_count=10 src
   flawfinder:
     executor: python/default
     resource_class: small
