@@ -19,7 +19,7 @@ jobs:
       - save_cache:
           key: v0.1.0-build-rp2040connect
           paths:
-            - .pio/build
+            - .pio
   lizard:
     executor: python/default
     resource_class: small
