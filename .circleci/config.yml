@@ -8,12 +8,18 @@ jobs:
     resource_class: small
     steps:
       - checkout # checkout source code to working directory
+      - restore_cache:
+          key: v0.1.0-build-rp2040connect
       - run:
           name: Install PlatformIO
           command: pip install --upgrade platformio
       - run:
           name: Compile Project
           command: pio run
+      - save_cache:
+          key: v0.1.0-build-rp2040connect
+          paths:
+            - .pio/build
   lizard:
     executor: python/default
     resource_class: small
