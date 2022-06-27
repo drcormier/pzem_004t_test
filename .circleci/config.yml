@@ -17,7 +17,7 @@ jobs:
           command: pip install --upgrade platformio
       - run:
           name: Compile Project
-          command: pio run
+          command: pio run -e nanorp2040connect_default -e nanorp2040connect_speed -e nanorp2040connect_fast
       - save_cache:
           key: v0.1.0-build-rp2040connect-{{ .Branch }}-{{ .Revision }}
           paths:
