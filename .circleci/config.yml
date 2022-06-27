@@ -9,7 +9,9 @@ jobs:
     steps:
       - checkout # checkout source code to working directory
       - restore_cache:
-          key: v0.1.0-build-rp2040connect
+          keys:
+            - v0.1.0-build-rp2040connect-{{ .Branch }}-{{ checksum ".pio/build/project.checksum" }}
+            - v0.1.0-build-rp2040connect-{{ .Branch }}-
       - run:
           name: Install PlatformIO
           command: pip install --upgrade platformio
@@ -17,7 +19,7 @@ jobs:
           name: Compile Project
           command: pio run
       - save_cache:
-          key: v0.1.0-build-rp2040connect
+          key: v0.1.0-build-rp2040connect-{{ .Branch }}-{{ checksum ".pio/build/project.checksum" }}
           paths:
             - .pio
   lizard:
