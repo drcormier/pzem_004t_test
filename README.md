@@ -1,1 +1,2 @@
 # pzem_004t_test
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/drcormier/pzem_004t_test/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/drcormier/pzem_004t_test/tree/main)
