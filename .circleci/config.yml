@@ -3,7 +3,7 @@ orbs:
   python: circleci/python@volatile
 
 jobs:
-  build:
+  build_rp2040:
     executor: python/default
     resource_class: small
     steps:
@@ -20,6 +20,25 @@ jobs:
           command: pio run -e nanorp2040connect_default -e nanorp2040connect_speed -e nanorp2040connect_fast
       - save_cache:
           key: v0.1.0-build-rp2040connect-{{ .Branch }}-{{ .Revision }}
+          paths:
+            - .pio
+  build_feather:
+    executor: python/default
+    resource_class: small
+    steps:
+      - checkout # checkout source code to working directory
+      - restore_cache:
+          keys:
+            - v0.1.0-build-feather-{{ .Branch }}-{{ .Revision }}
+            - v0.1.0-build-feather-{{ .Branch }}-
+      - run:
+          name: Install PlatformIO
+          command: pip install --upgrade platformio
+      - run:
+          name: Compile Project
+          command: pio run -e adafruit_feather_m0_default -e adafruit_feather_m0_speed -e adafruit_feather_m0_fast
+      - save_cache:
+          key: v0.1.0-build-feather-{{ .Branch }}-{{ .Revision }}
           paths:
             - .pio
   lizard:
@@ -50,7 +69,11 @@ workflows:
     jobs:
       - lizard
       - flawfinder
-      - build:
+      - build_rp2040:
+          requires:
+            - lizard
+            - flawfinder
+      - build_feather:
           requires:
             - lizard
             - flawfinder
