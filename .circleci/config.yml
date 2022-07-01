@@ -4,7 +4,8 @@ orbs:
 
 jobs:
   build_rp2040:
-    executor: python/default
+    docker:
+      - image: cimg/python:3.10
     resource_class: small
     steps:
       - checkout # checkout source code to working directory
@@ -23,7 +24,8 @@ jobs:
           paths:
             - .pio
   build_feather:
-    executor: python/default
+    docker:
+      - image: cimg/python:3.10
     resource_class: small
     steps:
       - checkout # checkout source code to working directory
@@ -42,7 +44,8 @@ jobs:
           paths:
             - .pio
   lizard:
-    executor: python/default
+    docker:
+      - image: cimg/python:3.10
     resource_class: small
     steps:
       - checkout # checkout source code to working directory
@@ -53,7 +56,8 @@ jobs:
           name: Check Project
           command: lizard -T nloc=150 -T length=50 -T parameter_count=10 src
   flawfinder:
-    executor: python/default
+    docker:
+      - image: cimg/python:3.10
     resource_class: small
     steps:
       - checkout # checkout source code to working directory
@@ -63,17 +67,32 @@ jobs:
       - run:
           name: Check Project
           command: flawfinder src
+  cppchecker:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - checkout # checkout source code to working directory
+      - run:
+          name: Install cppchecker
+          command: sudo apt update && sudo apt install cppchecker
+      - run:
+          name: Run cppchecker
+          command: cppchecker src
 
 workflows:
   main:
     jobs:
       - lizard
       - flawfinder
+      - cppchecker
       - build_rp2040:
           requires:
             - lizard
             - flawfinder
+            - cppchecker
       - build_feather:
           requires:
             - lizard
             - flawfinder
+            - cppchecker
