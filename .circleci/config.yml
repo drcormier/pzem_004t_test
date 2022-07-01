@@ -67,32 +67,32 @@ jobs:
       - run:
           name: Check Project
           command: flawfinder src
-  cppchecker:
+  cppcheck:
     docker:
       - image: cimg/base:current
     resource_class: small
     steps:
       - checkout # checkout source code to working directory
       - run:
-          name: Install cppchecker
-          command: sudo apt update && sudo apt install cppchecker
+          name: Install cppcheck
+          command: sudo apt update && sudo apt install cppcheck
       - run:
-          name: Run cppchecker
-          command: cppchecker src
+          name: Run cppcheck
+          command: cppcheck src/
 
 workflows:
   main:
     jobs:
       - lizard
       - flawfinder
-      - cppchecker
+      - cppcheck
       - build_rp2040:
           requires:
             - lizard
             - flawfinder
-            - cppchecker
+            - cppcheck
       - build_feather:
           requires:
             - lizard
             - flawfinder
-            - cppchecker
+            - cppcheck
