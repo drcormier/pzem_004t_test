@@ -30,6 +30,7 @@ typedef struct
     double apparent_power;
     // VAR, resolution of 0.1VAR
     double reactive_power;
+    // ratio between active and apparent power
     double phase_angle;
     // True if the active power is above the set power alarm value
     bool over_power_alarm;

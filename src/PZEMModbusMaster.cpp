@@ -67,4 +67,5 @@ void PZEMModbusMaster::derivedData()
 {
     power.apparent_power = power.voltage_usage * power.current_usage;
     power.reactive_power = sqrt(sq(power.apparent_power) - sq(power.active_power));
+    power.phase_angle    = power.active_power / power.apparent_power;
 }
